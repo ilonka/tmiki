@@ -10,7 +10,6 @@ public class Bernoulli {
 		  for(int i = 0; i < n; i++) {
 		    if(Math.random() < p)
 		      x++;
-		    zapis(i,x);
 		  }
 		  
 			
@@ -31,7 +30,8 @@ try {
 			}
 }
 public static void main (String args[]) throws IOException {
-	getBinomial(50, 0.25);
-
+	for (int i=0;i<10;i++){
+		zapis(i,getBinomial(50, 0.25));
+	}
 }
 }
