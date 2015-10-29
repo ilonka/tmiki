@@ -2,16 +2,21 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Bernoulli {
-
-	public static int getBinomial(int n, double p) throws IOException {
+public class CouponCollector {
+	public static int coupon(int n) {
+		boolean[] found = new boolean[n];
 		int x = 0;
-		for (int i = 0; i < n; i++) {
-			if (Math.random() < p)
-				x++;
-		}
+		int v = 0;
+		while (v < n) {
+			int val = (int) (Math.random() * n);
+			x++;
+			if (!found[val])
+				v++;
+			found[val] = true;
 
+		}
 		return x;
+
 	}
 
 	public static void zapis(int i, int x) throws IOException {
@@ -30,7 +35,7 @@ public class Bernoulli {
 
 	public static void main(String args[]) throws IOException {
 		for (int i = 0; i < 1000; i++) {
-			zapis(i, getBinomial(40, 0.5));
+			zapis(i,coupon(10));
 		}
 	}
 }

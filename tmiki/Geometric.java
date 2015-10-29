@@ -10,28 +10,30 @@ public class Geometric {
 		double u;
 
 		u = Math.random();
-		x = log(u) / log(p);
+		x = Math.log(u) / Math.log(p);
 
 		return x;
 
 	}
 
-	public static void zapis(int i, double x) throws IOException {
+	public static void zapis(double x) throws IOException {
 		FileWriter tworzeniePliku = new FileWriter("DANE.csv", true);
 		BufferedWriter zapis = new BufferedWriter(tworzeniePliku);
-		double px = x;
-		int pi = i;
+		String px = Double.toString(x);
 
 		try {
-			zapis.write(pi + ";" + px);
+			zapis.write(px);
 			zapis.newLine();
 		} finally {
 			zapis.close();
 		}
 	}
+
 	public static void main(String args[]) throws IOException {
-		for(int i=0; i<40; i++){
-		System.out.println(geometric(0.2));
+		for (int i = 0; i < 1000; i++) {
+			double a = geometric(0.2);
+			System.out.println(i + 1 + " " + a);
+			zapis(a);
 		}
 	}
 }
